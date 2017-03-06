@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>:3c test</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href='http://fonts.googleapis.com/css?family=Cousine' rel='stylesheet' type='text/css' />
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.2.js"></script>
+
+<style>
+body{
+font-family:"Cousine";
+}
+img:hover {cursor:pointer;border:1px solid #000;}
+</style>
+
+<script>
+
+	var colors = new Array('533595','3b0078','DDDDDD','111111','fe0a00','740009','012c56','01a0fe','3c3c3c','d4b9ca','a7968f','fee320','049584','fe8101','fe7445','fe5b70','57fe01','0000cc','d24da6','004443');
+	
+	
+	
+	
+	$(document).ready(function() {
+
+		for (i=0;i<colors.length;i++) {
+			
+			$("#controls1").append("<img style='background-color:#" + colors[i] + ";' src='x.png' data-color='" + colors[i] + "' />");
+			$("#controls2").append("<img style='background-color:#" + colors[i] + ";' src='x.png' data-color='" + colors[i] + "' />");
+			
+		}
+		
+		$("#controls1").delegate("img","click",function() {
+			old_src = $("#image").attr('src');
+			old_src= old_src.split('/');
+			$("#image").attr('src',"/off/index.php/" + $(this).attr('data-color') + "/" + old_src[4]);
+		});
+		
+		$("#controls2").delegate("img","click",function() {
+			old_src = $("#image").attr('src');
+			old_src= old_src.split('/');
+			$("#image").attr('src',"/off/index.php/" + old_src[3] + "/" + $(this).attr('data-color'));
+		});
+		
+
+	});
+	
+</script>
+
+</head>
+<body>
+
+<img src="/off/index.php/fe8101/3c3c3c" id="image" style="width:600px;float:left;"/>
+
+
+<div style="width:150px;float:left;" id="controls1">Body</div>
+<div style="width:150px;float:left;" id="controls2">Sleeves</div>
+
+</body>
+</html>
