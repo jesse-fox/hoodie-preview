@@ -16,34 +16,37 @@ img:hover {cursor:pointer;border:1px solid #000;}
 <script>
 
 	var colors = new Array('533595','3b0078','DDDDDD','111111','fe0a00','740009','012c56','01a0fe','3c3c3c','d4b9ca','a7968f','fee320','049584','fe8101','fe7445','fe5b70','57fe01','0000cc','d24da6','004443');
-	
+
+	// Update this line to
 	var base = "/hoodie-preview/image.php?=";
-	
-	
+
+
 	$(document).ready(function() {
 
+
+
 		for (i=0;i<colors.length;i++) {
-			
-			$("#controls1").append("<img style='background-color:#" + colors[i] + ";' src='x.png' data-color='" + colors[i] + "' />");
-			$("#controls2").append("<img style='background-color:#" + colors[i] + ";' src='x.png' data-color='" + colors[i] + "' />");
-			
+
+			$("#controls1").append("<img style='background-color:#" + colors[i] + ";' src='img/x.png' data-color='" + colors[i] + "' />");
+			$("#controls2").append("<img style='background-color:#" + colors[i] + ";' src='img/x.png' data-color='" + colors[i] + "' />");
+
 		}
-		
+
 		$("#controls1").delegate("img","click",function() {
 			old_src = $("#image").attr('src');
 			old_src= old_src.split('/');
-			$("#image").attr('src',"/off/index.php/" + $(this).attr('data-color') + "/" + old_src[4]);
+			$("#image").attr('src', base + $(this).attr('data-color') + "/" + old_src[4]);
 		});
-		
+
 		$("#controls2").delegate("img","click",function() {
 			old_src = $("#image").attr('src');
 			old_src= old_src.split('/');
-			$("#image").attr('src',"/off/index.php/" + old_src[3] + "/" + $(this).attr('data-color'));
+			$("#image").attr('src', base + old_src[3] + "/" + $(this).attr('data-color'));
 		});
-		
+
 
 	});
-	
+
 </script>
 
 </head>
