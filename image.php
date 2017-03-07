@@ -22,9 +22,9 @@ $second_color = "#" . $segments[2];
 
 
 
-$sleeves_img = new Imagick('sleeves.jpg');
-$body_img = new Imagick('body.jpg');
-$ghosts = new Imagick('over.png');
+$sleeves_img = new Imagick('img/sleeves.jpg');
+$body_img = new Imagick('img/body.jpg');
+$ghosts = new Imagick('img/over.png');
 
 $height = $sleeves_img->getImageHeight();
 $width = $sleeves_img->getImageWidth();
@@ -36,28 +36,28 @@ try{
 
 	$canvas = new Imagick();
 	$canvas->newImage($width, $height, $background, "jpg");
-	
-	
+
+
 	$sleeve_color = new Imagick();
 	$sleeve_color->newPseudoImage($width,$height,"canvas:" . $second_color);
-	
+
 	$sleeve_color->compositeImage($sleeves_img, Imagick::COMPOSITE_COPYOPACITY, 0, 0);
-	
-	
+
+
 	$body_color = new Imagick();
 	$body_color->newPseudoImage($width,$height,"canvas:". $main_color);
 
 	$body_color->compositeImage($body_img, Imagick::COMPOSITE_COPYOPACITY, 0, 0);
-	
-	
+
+
 
 	$canvas->compositeImage($body_color, imagick::ALPHACHANNEL_COPY, 0, 0 );
 	$canvas->compositeImage($sleeve_color,imagick::ALPHACHANNEL_COPY, 0, 0 );
 	$canvas->compositeImage($ghosts,imagick::COMPOSITE_DEFAULT, 0, 0 );
-	
-	
-	
-	
+
+
+
+
 	header( "Content-Type: image/jpg" );
 	echo $canvas;
 	die;

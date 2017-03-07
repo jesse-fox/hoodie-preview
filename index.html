@@ -23,6 +23,8 @@ img:hover {cursor:pointer;border:1px solid #000;}
 
 	$(document).ready(function() {
 
+		// Create a preview image on page
+		$("body").prepend("<img src='" + base + "/fe8101/3c3c3c' id='image'>")
 
 
 		for (i=0;i<colors.length;i++) {
@@ -51,8 +53,6 @@ img:hover {cursor:pointer;border:1px solid #000;}
 
 </head>
 <body>
-
-<img src="/off/index.php/fe8101/3c3c3c" id="image" style="width:600px;float:left;"/>
 
 
 <div style="width:150px;float:left;" id="controls1">Body</div>
