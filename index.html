@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,24 +8,32 @@
 <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.2.js"></script>
 
 <style>
-body{
-font-family:"Cousine";
-}
-img:hover {cursor:pointer;border:1px solid #000;}
+	body{
+		font-family:"Cousine";
+	}
+	img:hover {
+		cursor:pointer;
+		border:1px solid #000;
+	}
+	.panel {
+		float: left;
+		width: 150px;
+	}
 </style>
 
 <script>
 
+	// Colors available as options
 	var colors = new Array('533595','3b0078','DDDDDD','111111','fe0a00','740009','012c56','01a0fe','3c3c3c','d4b9ca','a7968f','fee320','049584','fe8101','fe7445','fe5b70','57fe01','0000cc','d24da6','004443');
 
-	// Update this line to
-	var base = "/hoodie-preview/image.php?=";
+	// Update this line to your base url
+	var base = "/hoodie-preview/image.php?";
 
 
 	$(document).ready(function() {
 
 		// Create a preview image on page
-		$("body").prepend("<img src='" + base + "/fe8101/3c3c3c' id='image'>")
+		$("body").prepend("<img src='" + base + "fe8101/3c3c3c' id='image'>")
 
 
 		for (i=0;i<colors.length;i++) {
@@ -55,8 +64,8 @@ img:hover {cursor:pointer;border:1px solid #000;}
 <body>
 
 
-<div style="width:150px;float:left;" id="controls1">Body</div>
-<div style="width:150px;float:left;" id="controls2">Sleeves</div>
+<div class="panel" id="controls1">Body</div>
+<div class="panel" id="controls2">Sleeves</div>
 
 </body>
 </html>
