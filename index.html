@@ -10,14 +10,27 @@
 <style>
 	body{
 		font-family:"Cousine";
+		background-color: #333;
 	}
 	img:hover {
 		cursor:pointer;
-		border:1px solid #000;
+		border: none;
+	}
+	#image {
+		float: right;
 	}
 	.panel {
 		float: left;
 		width: 150px;
+
+		background-color: #FFF;
+		border: 2px solid #444;
+		padding: 10px;
+		margin: 10px;
+	}
+	.x-button {
+		width: 50px;
+		height: auto;
 	}
 </style>
 
@@ -35,24 +48,44 @@
 		// Create a preview image on page
 		$("body").prepend("<img src='" + base + "fe8101/3c3c3c' id='image'>")
 
-
+		// Print a button for each color
 		for (i=0;i<colors.length;i++) {
 
-			$("#controls1").append("<img style='background-color:#" + colors[i] + ";' src='img/x.png' data-color='" + colors[i] + "' />");
-			$("#controls2").append("<img style='background-color:#" + colors[i] + ";' src='img/x.png' data-color='" + colors[i] + "' />");
+			var x_image = "<img class='x-button' style='background-color:#" + colors[i] + ";' src='img/x.png' data-color='" + colors[i] + "' />";
+
+			$("#controls1").append(x_image);
+			$("#controls2").append(x_image);
 
 		}
 
 		$("#controls1").delegate("img","click",function() {
+
+			// Get color of clicked image
+			var color = $(this).attr('data-color');
+
 			old_src = $("#image").attr('src');
-			old_src= old_src.split('/');
-			$("#image").attr('src', base + $(this).attr('data-color') + "/" + old_src[4]);
+			old_src = old_src.split('?');
+
+			// Get the part after the ? eg imagephp?123/123
+			var current = old_src[1];
+			var current = current.split("/");
+
+			$("#image").attr('src', base + color + "/" + current[1]);
 		});
 
 		$("#controls2").delegate("img","click",function() {
+
+			// Get color of clicked image
+			var color = $(this).attr('data-color');
+
 			old_src = $("#image").attr('src');
-			old_src= old_src.split('/');
-			$("#image").attr('src', base + old_src[3] + "/" + $(this).attr('data-color'));
+			old_src = old_src.split('?');
+
+			// Get the part after the ? eg imagephp?123/123
+			var current = old_src[1];
+			var current = current.split("/");
+
+			$("#image").attr('src', base + current[0] + "/" + color);
 		});
 
 
@@ -64,8 +97,13 @@
 <body>
 
 
-<div class="panel" id="controls1">Body</div>
-<div class="panel" id="controls2">Sleeves</div>
+<div class="panel" id="controls1">
+	<h3>Body</h3>
+</div>
+
+<div class="panel" id="controls2">
+	<h3>Sleeves</div>
+</div>
 
 </body>
 </html>
