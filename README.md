@@ -4,6 +4,9 @@
 Quick script to help show what different color combinations would look like
 
 
+![Example Gif](https://github.com/jane-fox/hoodie-preview/blob/master/img/screenshot.png) 
+
+
 
 ## Running
 
