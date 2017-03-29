@@ -22,10 +22,14 @@ Requires a web server like nginx with php
 
 You must install image magick, probably
 
-` sudo apt install php-imagick
+```
+sudo apt install php-imagick
+```
 
 May have to reload php and server, eg
 
-` sudo service php7.0-fpm restart
+```
+sudo service php7.0-fpm restart
+```
 
 Index file has a base url in the script you might have to update
